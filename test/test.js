@@ -152,7 +152,7 @@ describe("Positive Scenarios", ()=>{
 
   describe('search movie with ID + Season + Episode', function(done) {
       it('search movie with ID + Season + Episode', function(done) {
-        request.get({ url: baseUrl + 'i=tt2467372' + '&Season=4' + '&Episode5'},
+        request.get({ url: baseUrl + 'i=tt2467372' + '&Season=4' + '&Episode=5'},
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Title).to.equal("Halloween IV");
