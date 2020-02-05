@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha ./api/test --recursive --reporter mochawesome --reporter-options reportDir=reports/mochawesome/ --timeout 180000",
+    "reports": "open 'reports/mochawesome/mochawesome.html'"
   },
-  "author": "",
+  "author": "Ilham Dudi",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",

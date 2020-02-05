@@ -4,154 +4,187 @@ var expect = require("chai").expect;
 var baseUrl = "http://www.omdbapi.com/?apikey=51f260e4&"
 var util = require("util");
 
+var testCase = {
+  "positive" : {
+    "searchTitleYear" : "As a User, I want to search movie by title & year",
+    "searchTitle" : "As a User, I want to search movie by title",
+    "searchID" : "As a User, I want to search movie by movie's ID",
+    "searchTitleType" : "As a User, I want to search movie by title & type",
+    "searchTitleShortPlot" : "As a User, I want to search movie by title & short plot",
+    "searchTitleFullPlot" : "As a User, I want to search movie by title & full plot",
+    "searchTitleJSON" : "As a User, I want to search movie by title & get data type back as JSON",
+    "searchTitleXML" : "As a User, I want to search movie by title & get data type back as XML",
+    "searchTitleWithSpaces" : "As a User, I want to search movie by full title with spaces",
+    "searchMoviesbySearch" : "As a User, I want to search movie by search function",
+    "searchMoviesbySearchWithPagination" : "As a User, I want to search movie by search function with pagination",
+    "searchMoviesWithIDSeason" : "As a User, I want to search movie by ID with Season",
+    "searchMoviesWithIDSeasonEpisode" : "As a User, I want to search movie by ID, Season, and Episode"
+  },
+  "negative" : {
+
+  }
+}
+
 describe("Positive Scenarios", ()=>{
 
-  describe('search title & year', function(done) {
-      it('search title & year', function(done) {
-        request.get({ url: baseUrl + 't=social' + '&y=2010' },
-                function(error, response, body) {
-                  var bodyObject = JSON.parse(body);
-                    expect(bodyObject.Title).to.equal("The Social Network");
-                    expect(bodyObject.Year).to.equal("2010");
-                    expect(response.statusCode).to.equal(200);
-                    console.log(body);
-                  done();
-                });
-      });
+  describe('Search Title & Year', function(done) {
+    it( testCase.positive.searchTitleYear, async() => {
+          request.get({ url: baseUrl + 't=social' + '&y=2010' },
+                  function(error, response, body) {
+                    var bodyObject = JSON.parse(body);
+                      expect(bodyObject.Title).to.equal("The Social Network");
+                      expect(bodyObject.Year).to.equal("2010");
+                      expect(response.statusCode).to.equal(200);
+                      console.log("Log of Search Title & Year");
+                      console.log(body);
+                      console.log("=======");
+                  });
+        });
   });
 
-  describe('search title', function(done) {
-      it('search title', function(done) {
+  describe('Search Title', function(done) {
+      it( testCase.positive.searchTitle, async() => {
         request.get({ url: baseUrl + 't=the_social_network' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Title).to.equal("The Social Network");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Title");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search id', function(done) {
-      it('search id', function(done) {
+  describe('Search ID', function(done) {
+      it( testCase.positive.searchID, async() => {
         request.get({ url: baseUrl + 'i=tt1285016' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.imdbID).to.equal("tt1285016");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search ID");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search title & type', function(done) {
-      it('search title & type', function(done) {
+  describe('Search Title & Type', function(done) {
+      it( testCase.positive.searchTitleType, async() => {
         request.get({ url: baseUrl + 't=dark' + '&type=series' },
                 function(error, response, body) {
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Title & Type");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search title & short plot', function(done) {
-      it('search title & short plot', function(done) {
+  describe('Search Title & Short Plot', function(done) {
+      it( testCase.positive.searchTitleShortPlot, async() => {
         request.get({ url: baseUrl + 't=lord' + '&plot=short' },
                 function(error, response, body) {
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Title & Short Plot");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search title & full plot', function(done) {
-      it('search title & full plot', function(done) {
+  describe('Search Title & Full Plot', function(done) {
+      it( testCase.positive.searchTitleFullPlot, async() => {
         request.get({ url: baseUrl + 't=lord' + '&plot=full' },
                 function(error, response, body) {
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Title & Full Plot");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search title as json', function(done) {
-      it('search title as json', function(done) {
+  describe('Search Title as JSON', function(done) {
+      it( testCase.positive.searchTitleJSON, async() => {
         request.get({ url: baseUrl + 't=dark' + '&r=json' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Title).to.equal("Dark");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Title as JSON");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search title as xml', function(done) {
-      it('search title as xml', function(done) {
+  describe('Search Title as XML', function(done) {
+      it( testCase.positive.searchTitleXML, async() => {
         request.get({ url: baseUrl + 't=dark' + '&r=xml' },
                 function(error, response, body) {
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Title as XML");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search full title with spaces', function(done) {
-      it('search full title with spaces', function(done) {
+  describe('Search Full Title with Spaces', function(done) {
+      it( testCase.positive.searchTitleWithSpaces, async() => {
         request.get({ url: baseUrl + 't=dark' + '+knight' + '+rises' },
                 function(error, response, body) {
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Full Title with Spaces");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search movies by search', function(done) {
-      it('search movies by search', function(done) {
+  describe('Search Movies by Search', function(done) {
+      it( testCase.positive.searchMoviesbySearch, async() => {
         request.get({ url: baseUrl + 's=dark' },
                 function(error, response, body) {
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Movies by Search");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search movies by search with pagination', function(done) {
-      it('search movies by search with pagination', function(done) {
+  describe('Search Movies by Search with Pagination', function(done) {
+      it( testCase.positive.searchMoviesbySearchWithPagination, async() => {
         request.get({ url: baseUrl + 's=dark' + '&page=2' },
                 function(error, response, body) {
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Movies by Search with Pagination");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search movie with ID and Season', function(done) {
-      it('search movie with ID and Season', function(done) {
+  describe('Search Movie with ID and Season', function(done) {
+      it( testCase.positive.searchMoviesWithIDSeason, async() => {
         request.get({ url: baseUrl + 'i=tt2467372' + '&Season=4' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Title).to.equal("Brooklyn Nine-Nine");
                     expect(bodyObject.Season).to.equal("4");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Movies with ID and Season");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search movie with ID + Season + Episode', function(done) {
-      it('search movie with ID + Season + Episode', function(done) {
+  describe('Search Movie with ID, Season and Episode', function(done) {
+      it( testCase.positive.searchMoviesWithIDSeasonEpisode, async() => {
         request.get({ url: baseUrl + 'i=tt2467372' + '&Season=4' + '&Episode=5'},
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
@@ -159,8 +192,9 @@ describe("Positive Scenarios", ()=>{
                     expect(bodyObject.Season).to.equal("4");
                     expect(bodyObject.Episode).to.equal("5");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Movie with ID, Season and Episode");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
