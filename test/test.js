@@ -33,14 +33,11 @@ var testCase = {
     "searchWithNoParameter" : "As a User, I want to search movie and I input search with No Parameter",
     "searchWithRandomUnregisteredID" : "As a User, I want to search movie and I input ID with Random Unregistered ID",
     "searchWithIDIncorrectSeason" : "As a User, I want to search movie and I input ID with correct ID and wrong Season",
-    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
-    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
-    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
-    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
-    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
-    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
-    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
-
+    "searchWithIDSeasonIncorrectEpisode" : "As a User, I want to search movie and I input ID with correct ID, Season and Incorrect Episode",
+    "searchOnlyWithType" : "As a User, I want to search movie and I input only type",
+    "searchWithWrongType" : "As a User, I want to search movie and I input correct title but wrong type",
+    "searchWithWrongPlotType" : "As a User, I want to search movie and I input correct title but wrong plot type",
+    "searchWithWrongDataType" : "As a User, I want to search movie and I input correct title but wrong data type to return",
   }
 };
 
@@ -57,6 +54,7 @@ describe("Positive Scenarios", ()=>{
                       console.log("Log of Search Title & Year");
                       console.log(body);
                       console.log("=======");
+                      console.log("\n");
                   });
         });
   });
@@ -71,6 +69,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search Title");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -85,6 +84,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search ID");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -97,6 +97,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search Title & Type");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -109,6 +110,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search Title & Short Plot");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -121,6 +123,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search Title & Full Plot");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -135,6 +138,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search Title as JSON");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -147,6 +151,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search Title as XML");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -159,6 +164,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search Full Title with Spaces");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -171,6 +177,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search Movies by Search");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -183,6 +190,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search Movies by Search with Pagination");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -198,6 +206,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search Movies with ID and Season");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -214,6 +223,7 @@ describe("Positive Scenarios", ()=>{
                     console.log("Log of Search Movie with ID, Season and Episode");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -233,6 +243,7 @@ describe("Negative Scenarios", ()=> {
                     console.log("Log of Search with No Title");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -248,6 +259,7 @@ describe("Negative Scenarios", ()=> {
                     console.log("Log of Search with Year Only");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -263,6 +275,7 @@ describe("Negative Scenarios", ()=> {
                     console.log("Log of Search with Blank Search");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -278,6 +291,7 @@ describe("Negative Scenarios", ()=> {
                     console.log("Log of Cant Find Movie Search with Random Title");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -293,6 +307,7 @@ describe("Negative Scenarios", ()=> {
                     console.log("Log of Cant Find Movie Search with Year <1900");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -308,6 +323,7 @@ describe("Negative Scenarios", ()=> {
                     console.log("Log of Cant Find Movie Search with Year >=2500");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -323,6 +339,7 @@ describe("Negative Scenarios", ()=> {
                     console.log("Log of Cant Find Movie Search with Random Char Type");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -335,9 +352,10 @@ describe("Negative Scenarios", ()=> {
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Movie not found!");
                     expect(response.statusCode).to.equal(200);
-                    console.log("Search with Random Char search");
+                    console.log("Log of Search with Random Char search");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -350,9 +368,10 @@ describe("Negative Scenarios", ()=> {
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Too many results.");
                     expect(response.statusCode).to.equal(200);
-                    console.log("Search with Random Symbol search");
+                    console.log("Log of Search with Random Symbol search");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -365,9 +384,10 @@ describe("Negative Scenarios", ()=> {
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Something went wrong.");
                     expect(response.statusCode).to.equal(200);
-                    console.log("Search with No Parameter");
+                    console.log("Log of Search with No Parameter");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -380,9 +400,10 @@ describe("Negative Scenarios", ()=> {
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Incorrect IMDb ID.");
                     expect(response.statusCode).to.equal(200);
-                    console.log("Search with Random Unregistered ID");
+                    console.log("Log of Search with Random Unregistered ID");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
@@ -395,75 +416,86 @@ describe("Negative Scenarios", ()=> {
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Series or season not found!");
                     expect(response.statusCode).to.equal(200);
-                    console.log("Search with Correct ID but Incorrect Season");
+                    console.log("Log of Search with Correct ID but Incorrect Season");
                     console.log(body);
                     console.log("=======");
+                    console.log("\n");
                 });
       });
   });
 
-  describe('search with correct ID & Season but incorrect Episode', function(done) {
-      it('search with correct ID & Season but incorrect Episode', function(done) {
+  describe('Search with Correct ID & Season but Incorrect Episode', function(done) {
+      it( testCase.negative.searchWithIDSeasonIncorrectEpisode, async() => {
         request.get({ url: baseUrl + 'i=tt2467372' + '&Season=4' + '&Episode=25' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Series or episode not found!");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search with Correct ID & Season but Incorrect Episode");
                     console.log(body);
-                  done();
+                    console.log("=======");
+                    console.log("\n");
                 });
       });
   });
 
-  describe('search only with type', function(done) {
-      it('search onyl with type', function(done) {
+  describe('Search Only with Type', function(done) {
+      it( testCase.negative.searchOnlyWithType, async() => {
         request.get({ url: baseUrl + 'type=series' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Something went wrong.");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search Only with Type");
                     console.log(body);
-                  done();
+                    console.log("=======");
+                    console.log("\n");
                 });
       });
   });
 
-  describe('search with wrong type', function(done) {
-      it('search with wrong type', function(done) {
+  describe('Search with Wrong Type', function(done) {
+      it( testCase.negative.searchWithWrongType, async() => {
         request.get({ url: baseUrl + 's=lord' +'&type=opera' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Movie not found!");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search with Wrong Type");
                     console.log(body);
-                  done();
+                    console.log("=======");
+                    console.log("\n");
                 });
       });
   });
 
-  describe('search with wrong plot type', function(done) {
-      it('search with wrong type', function(done) {
+  describe('Search with Wrong Plot Type', function(done) {
+      it( testCase.negative.searchWithWrongPlotType, async() => {
         request.get({ url: baseUrl + 't=lord' +'&type=movie' + '&plot=high' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Plot).to.equal("A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search with Wrong Plot Type");
                     console.log(body);
-                  done();
+                    console.log("=======");
+                    console.log("\n");
                 });
       });
   });
 
-  describe('search with wrong data type to return', function(done) {
-      it('search with wrong data type to return', function(done) {
+  describe('Search with Wrong Data Type to Return', function(done) {
+      it( testCase.negative.searchWithWrongDataType, async() => {
         request.get({ url: baseUrl + 't=lord' +'&type=movie' + '&r=asdf' },
                 function(error, response, body) {
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search with Wrong Data Type to Return");
                     console.log(body);
-                  done();
+                    console.log("=======");
+                    console.log("\n");
                 });
       });
   });
