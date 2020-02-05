@@ -59,7 +59,7 @@ describe("Positive Scenarios", ()=>{
 
   describe('search title & short plot', function(done) {
       it('search title & short plot', function(done) {
-        request.get({ url: baseUrl + 't=dark' + '&plot=short' },
+        request.get({ url: baseUrl + 't=lord' + '&plot=short' },
                 function(error, response, body) {
                     expect(response.statusCode).to.equal(200);
                     console.log(body);
@@ -70,7 +70,7 @@ describe("Positive Scenarios", ()=>{
 
   describe('search title & full plot', function(done) {
       it('search title & full plot', function(done) {
-        request.get({ url: baseUrl + 't=dark' + '&plot=full' },
+        request.get({ url: baseUrl + 't=lord' + '&plot=full' },
                 function(error, response, body) {
                     expect(response.statusCode).to.equal(200);
                     console.log(body);
@@ -372,6 +372,44 @@ describe("Negative Scenarios", ()=> {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Something went wrong.");
+                    expect(response.statusCode).to.equal(200);
+                    console.log(body);
+                  done();
+                });
+      });
+  });
+
+  describe('search with wrong type', function(done) {
+      it('search with wrong type', function(done) {
+        request.get({ url: baseUrl + 's=lord' +'&type=opera' },
+                function(error, response, body) {
+                  var bodyObject = JSON.parse(body);
+                    expect(bodyObject.Response).to.equal("False");
+                    expect(bodyObject.Error).to.equal("Movie not found!");
+                    expect(response.statusCode).to.equal(200);
+                    console.log(body);
+                  done();
+                });
+      });
+  });
+
+  describe('search with wrong plot type', function(done) {
+      it('search with wrong type', function(done) {
+        request.get({ url: baseUrl + 't=lord' +'&type=movie' + '&plot=high' },
+                function(error, response, body) {
+                  var bodyObject = JSON.parse(body);
+                    expect(bodyObject.Plot).to.equal("A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.");
+                    expect(response.statusCode).to.equal(200);
+                    console.log(body);
+                  done();
+                });
+      });
+  });
+
+  describe('search with wrong data type to return', function(done) {
+      it('search with wrong data type to return', function(done) {
+        request.get({ url: baseUrl + 't=lord' +'&type=movie' + '&r=asdf' },
+                function(error, response, body) {
                     expect(response.statusCode).to.equal(200);
                     console.log(body);
                   done();
