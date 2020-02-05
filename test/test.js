@@ -21,9 +21,28 @@ var testCase = {
     "searchMoviesWithIDSeasonEpisode" : "As a User, I want to search movie by ID, Season, and Episode"
   },
   "negative" : {
+    "searchMoviesWithNoTitle" : "As a User, I want to search movie and I input movie title with nothing",
+    "searchMoviesWithYearOnly" : "As a User, I want to search movie and I input year only",
+    "searchWithBlankSearch" : "As a User, I want to search movie and I input search with nothing",
+    "searchWithRandomTitle" : "As a User, I want to search movie and I input random title",
+    "searchWithYearLess" : "As a User, I want to search movie and I input year with <1900",
+    "searchWithYearMore" : "As a User, I want to search movie and I input year with >=2500",
+    "searchWithRandomCharType" : "As a User, I want to search movie and I input type with Random Char",
+    "searchWithRandomChar" : "As a User, I want to search movie and I input search with Random Char",
+    "searchWithRandomSymbol" : "As a User, I want to search movie and I input search with Random Symbol",
+    "searchWithNoParameter" : "As a User, I want to search movie and I input search with No Parameter",
+    "searchWithRandomUnregisteredID" : "As a User, I want to search movie and I input ID with Random Unregistered ID",
+    "searchWithIDIncorrectSeason" : "As a User, I want to search movie and I input ID with correct ID and wrong Season",
+    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
+    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
+    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
+    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
+    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
+    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
+    "searchMoviesWithNoTitle" : "As a User, I want to search movie by title & year",
 
   }
-}
+};
 
 describe("Positive Scenarios", ()=>{
 
@@ -203,184 +222,182 @@ describe("Positive Scenarios", ()=>{
 
 describe("Negative Scenarios", ()=> {
 
-  describe('search with no title', function(done) {
-      it('search with no title', function(done) {
+  describe('Search with No Title', function(done) {
+      it( testCase.negative.searchMoviesWithNoTitle, async() => {
         request.get({ url: baseUrl + 't=' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Something went wrong.");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search with No Title");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search with year only', function(done) {
-      it('search with year only', function(done) {
+  describe('Search with Year Only', function(done) {
+      it( testCase.negative.searchMoviesWithYearOnly, async() => {
         request.get({ url: baseUrl + 'y=2010' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Something went wrong.");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search with Year Only");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search with blank search', function(done) {
-      it('search with blank search', function(done) {
+  describe('Search with Blank Search', function(done) {
+      it( testCase.negative.searchWithBlankSearch, async() => {
         request.get({ url: baseUrl + 's=' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Something went wrong.");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Search with Blank Search");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('cant find movie search with random title', function(done) {
-      it('cant  find movie search with random title', function(done) {
+  describe('Cant Find Movie Search with Random Title', function(done) {
+      it( testCase.negative.searchWithRandomTitle, async() => {
         request.get({ url: baseUrl + 't=sadlk12341' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Movie not found!");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Cant Find Movie Search with Random Title");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('cant find movie search with random title', function(done) {
-      it('cant find movie search with random title', function(done) {
-        request.get({ url: baseUrl + 't=sadlk12341' },
-                function(error, response, body) {
-                  var bodyObject = JSON.parse(body);
-                    expect(bodyObject.Response).to.equal("False");
-                    expect(bodyObject.Error).to.equal("Movie not found!");
-                    expect(response.statusCode).to.equal(200);
-                    console.log(body);
-                  done();
-                });
-      });
-  });
-
-  describe('cant find movie search with year <1900', function(done) {
-      it('cant find movie search with year <1900', function(done) {
+  describe('Cant Find Movie Search with Year <1900', function(done) {
+      it( testCase.negative.searchWithYearLess, async() => {
         request.get({ url: baseUrl + 't=lord' + 'y=1200' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Movie not found!");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Cant Find Movie Search with Year <1900");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('cant find movie search with year >=2050', function(done) {
-      it('cant find movie search with year >=2050', function(done) {
+  describe('Cant Find Movie Search with Year >=2050', function(done) {
+      it( testCase.negative.searchWithYearMore, async() => {
         request.get({ url: baseUrl + 't=lord' + 'y=2050' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Movie not found!");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Cant Find Movie Search with Year >=2500");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('cant find movie search with random char type', function(done) {
-      it('cant find movie search with random char type', function(done) {
+  describe('Cant Find Movie Search with Random Char Type', function(done) {
+      it( testCase.negative.searchWithRandomCharType, async() => {
         request.get({ url: baseUrl + 's=dark' + 'type=asdf' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Movie not found!");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Log of Cant Find Movie Search with Random Char Type");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search with random char search', function(done) {
-      it('search with random char search', function(done) {
+  describe('Search with Random Char search', function(done) {
+      it( testCase.negative.searchWithRandomChar, async() => {
         request.get({ url: baseUrl + 's=asadfa123' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Movie not found!");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Search with Random Char search");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search with random symbol search', function(done) {
-      it('search with random symbol search', function(done) {
+  describe('Search with Random Symbol Search', function(done) {
+      it( testCase.negative.searchWithRandomSymbol, async() => {
         request.get({ url: baseUrl + 's=!@#$%!' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Too many results.");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Search with Random Symbol search");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search with no parameter', function(done) {
-      it('search with no parameter', function(done) {
+  describe('Search with No Parameter', function(done) {
+      it( testCase.negative.searchWithNoParameter, async() => {
         request.get({ url: baseUrl + '' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Something went wrong.");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Search with No Parameter");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search with random unregistered ID', function(done) {
-      it('search with random unregistered ID', function(done) {
+  describe('Search with Random Unregistered ID', function(done) {
+      it( testCase.negative.searchWithRandomUnregisteredID, async() => {
         request.get({ url: baseUrl + 'i=123asd1' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Incorrect IMDb ID.");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Search with Random Unregistered ID");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
 
-  describe('search with correct ID but incorrect Season', function(done) {
-      it('search with correct ID but incorrect Season', function(done) {
+  describe('Search with Correct ID but Incorrect Season', function(done) {
+      it( testCase.negative.searchWithIDIncorrectSeason, async() => {
         request.get({ url: baseUrl + 'i=tt0944947' + '&Season=10' },
                 function(error, response, body) {
                   var bodyObject = JSON.parse(body);
                     expect(bodyObject.Response).to.equal("False");
                     expect(bodyObject.Error).to.equal("Series or season not found!");
                     expect(response.statusCode).to.equal(200);
+                    console.log("Search with Correct ID but Incorrect Season");
                     console.log(body);
-                  done();
+                    console.log("=======");
                 });
       });
   });
